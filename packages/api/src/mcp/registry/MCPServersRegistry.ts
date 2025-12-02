@@ -88,10 +88,11 @@ export class MCPServersRegistry {
     config: t.MCPOptions,
     storageLocation: 'CACHE' | 'DB',
     userId?: string,
-  ): Promise<void> {
+  ): Promise<t.ParsedServerConfig> {
     const configRepo = this.getConfigRepository(storageLocation);
     const parsedConfig = await MCPServerInspector.inspect(serverName, config);
     await configRepo.update(serverName, parsedConfig, userId);
+    return parsedConfig;
   }
 
   // TODO: This is currently used to determine if a server requires OAuth. However, this info can

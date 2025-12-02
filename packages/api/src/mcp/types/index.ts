@@ -153,7 +153,7 @@ export type ParsedServerConfig = MCPOptions & {
   tools?: string;
   toolFunctions?: LCAvailableTools;
   initDuration?: number;
-  lastUpdatedAt?: number;
+  updatedAt?: number;
   dbId?: string;
 };
 

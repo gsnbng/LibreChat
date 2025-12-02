@@ -32,7 +32,7 @@ export class ServerConfigsCacheRedis
       throw new Error(
         `Server "${serverName}" already exists in cache. Use update() to modify existing configs.`,
       );
-    const success = await this.cache.set(serverName, { ...config, lastUpdatedAt: Date.now() });
+    const success = await this.cache.set(serverName, { ...config, updatedAt: Date.now() });
     this.successCheck(`add ${this.namespace} server "${serverName}"`, success);
   }
 
@@ -43,7 +43,7 @@ export class ServerConfigsCacheRedis
       throw new Error(
         `Server "${serverName}" does not exist in cache. Use add() to create new configs.`,
       );
-    const success = await this.cache.set(serverName, { ...config, lastUpdatedAt: Date.now() });
+    const success = await this.cache.set(serverName, { ...config, updatedAt: Date.now() });
     this.successCheck(`update ${this.namespace} server "${serverName}"`, success);
   }
 
