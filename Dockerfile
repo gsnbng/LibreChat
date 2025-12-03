@@ -47,7 +47,9 @@ RUN \
 # Node API setup
 EXPOSE 3080
 ENV HOST=0.0.0.0
-CMD ["npm", "run", "backend"]
+COPY --chown=node:node docker-entrypoint.sh /app/docker-entrypoint.sh
+RUN chmod +x /app/docker-entrypoint.sh
+ENTRYPOINT ["/app/docker-entrypoint.sh"]
 
 # Optional: for client with nginx routing
 # FROM nginx:stable-alpine AS nginx-client
