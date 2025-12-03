@@ -165,6 +165,21 @@ actions:
 
 # Example MCP Servers Object Structure
 # mcpServers:
+    FrappeStockItemService:
+        type: "stdio" 
+        command: "uv"
+        args:
+          - run
+          - "--with"
+          - "mcp[cli]"
+          - "mcp"
+          - run
+          - "frappe-python-mcp/server.py"
+        timeout: 300000
+        env:
+          FRAPPE_API_KEY: "${FRAPPE_API_KEY}"
+          FRAPPE_API_SECRET: "${FRAPPE_API_SECRET}"
+          FRAPPE_URL: "${FRAPPE_URL}"
 #   everything:
 #     # type: sse # type can optionally be omitted
 #     url: http://localhost:3001/sse
